@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="240dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    app:cardElevation="5dp">
+    
+    <android.widget.LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="5dp">
+        
+        <android.widget.ImageView
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:id="@+id/item_img"/>
+        
+        <android.widget.TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_name"
+            android:layout_marginTop="5dp"
+            android:textStyle="normal"
+            android:textAllCaps="false"
+            android:textSize="24sp"
+            android:letterSpacing="0"/>
+      
+        <android.widget.TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_price"
+            android:layout_marginTop="5dp"/>
+            
+        <android.widget.TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_categorie"
+            android:layout_marginTop="5dp"/> 
+            
+    </android.widget.LinearLayout>    
+
+</com.google.android.material.card.MaterialCardView>
