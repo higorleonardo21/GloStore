@@ -10,13 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import bo.hlva.glostore.R;
 import bo.hlva.glostore.databinding.ActivityMainBinding;
-import bo.hlva.glostore.ui.activities.LoginActivity;
 import bo.hlva.glostore.ui.fragments.FavoritesFragment;
 import bo.hlva.glostore.ui.fragments.HomeFragment;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.itsaky.androidide.logsender.LogSender;
 
 public class MainActivity extends AppCompatActivity
@@ -165,4 +163,7 @@ public class MainActivity extends AppCompatActivity
             + "Email hlvargasarrazola@gmail.com");
     builder.show();
   }
+
+  
 }
+
