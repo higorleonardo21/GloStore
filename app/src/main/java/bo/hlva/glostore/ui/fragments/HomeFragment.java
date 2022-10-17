@@ -6,14 +6,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import bo.hlva.glostore.data.model.Product;
 import bo.hlva.glostore.databinding.FragmentHomeBinding;
 import bo.hlva.glostore.ui.adapters.ProductsAdapter;
+import bo.hlva.glostore.ui.dialogs.DetailsDialog;
+import bo.hlva.glostore.ui.listeners.OnItemClickListener;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-public class HomeFragment extends Fragment{
+public class HomeFragment extends Fragment implements OnItemClickListener{
 
   private FragmentHomeBinding binding;
   private ProductsAdapter mAdapter;
@@ -28,20 +32,25 @@ public class HomeFragment extends Fragment{
   }
 
   private void setupViews() {
+      
+      
+  }
 
-    binding.recyclerview.setLayoutManager(new GridLayoutManager(getContext(), 2));
-    binding.recyclerview.setHasFixedSize(true);
+  @Override
+  public void onStart() {
+          super.onStart();
+          
+              Query query = FirebaseFirestore.getInstance().collection("products");
+            FirestoreRecyclerOptions<Product> options =
+            new FirestoreRecyclerOptions.Builder<Product>().setQuery(query, Product.class).build();
 
-    Query query = FirebaseFirestore.getInstance().collection("products");
-    FirestoreRecyclerOptions<Product> options =
-        new FirestoreRecyclerOptions.Builder<Product>().setQuery(query, Product.class).build();
+            mAdapter = new ProductsAdapter(options, this);
 
-    mAdapter = new ProductsAdapter(options);
-    mAdapter.startListening();
-
-    binding.recyclerview.setLayoutManager(new GridLayoutManager(getContext(), 2));
-    binding.recyclerview.setHasFixedSize(true);
-    binding.recyclerview.setAdapter(mAdapter);
+            binding.recyclerview.setLayoutManager(new GridLayoutManager(getActivity(),2));
+            binding.recyclerview.setHasFixedSize(true);
+            binding.recyclerview.setAdapter(mAdapter);
+          
+            mAdapter.startListening();
   }
 
   @Override
@@ -50,5 +59,11 @@ public class HomeFragment extends Fragment{
     mAdapter.stopListening();
   }
 
+    @Override
+    public void onItemClick(String idProduct) {
+        //show details dialog
+        DetailsDialog.getInstance(idProduct,getFragmentManager());
+    }
+    
 }
 

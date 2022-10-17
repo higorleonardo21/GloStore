@@ -52,6 +52,15 @@
                 android:layout_width="match_parent"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/item_price"/>
+                
+            <android.widget.CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/selector_like"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"/>    
             
         
         </RelativeLayout>

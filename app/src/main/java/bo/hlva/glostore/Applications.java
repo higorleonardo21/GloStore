@@ -10,6 +10,6 @@ public class Applications extends Application {
     super.onCreate();
     
     //apply theme material 3 android
-    DynamicColors.applyToActivitiesIfAvailable(this);
+   // DynamicColors.applyToActivitiesIfAvailable(this);
   }
 }
