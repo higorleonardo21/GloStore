@@ -48,6 +48,19 @@ public class ProductsAdapter extends FirestoreRecyclerAdapter<Product, ProductsA
       holder.binding.getRoot().setOnClickListener(view -> {
           listener.onItemClick(idProduct);
       });
+      
+      //state favorites
+      holder.binding.checkbox.setOnCheckedChangeListener((checkbox,state) ->{
+          
+          if(state){
+              
+              listener.onItemClickFavorites(state,idProduct);
+          }
+          else{
+              listener.onItemClickFavorites(state,idProduct);
+          }
+          
+      });
   }
 
   public class ViewHolder extends RecyclerView.ViewHolder {

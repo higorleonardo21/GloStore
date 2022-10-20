@@ -5,22 +5,27 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import bo.hlva.glostore.R;
 import bo.hlva.glostore.databinding.ActivityMainBinding;
 import bo.hlva.glostore.ui.fragments.FavoritesFragment;
 import bo.hlva.glostore.ui.fragments.HomeFragment;
+import bo.hlva.glostore.ui.listeners.OnFavoritesListener;
+import bo.hlva.glostore.ui.viewmodels.MainViewModel;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.itsaky.androidide.logsender.LogSender;
 
 public class MainActivity extends AppCompatActivity
-    implements NavigationView.OnNavigationItemSelectedListener {
+    implements NavigationView.OnNavigationItemSelectedListener, OnFavoritesListener {
 
   private ActivityMainBinding binding;
+  private MainViewModel mViewModel;
   private ActionBarDrawerToggle toggle;
 
   private FirebaseAuth mAuth;
@@ -40,6 +45,9 @@ public class MainActivity extends AppCompatActivity
     // views binding
     binding = ActivityMainBinding.inflate(getLayoutInflater());
     setContentView(binding.getRoot());
+    
+    //viewmodel
+    mViewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
     setupViews();
   }
@@ -95,6 +103,7 @@ public class MainActivity extends AppCompatActivity
   // **************
 
   private void setupViews() {
+      
     // actionbar
     setSupportActionBar(binding.toolbar);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -110,7 +119,7 @@ public class MainActivity extends AppCompatActivity
 
     // check delfauft item
     binding.navigationView.setCheckedItem(R.id.menu_item_home);
-    loadFragment(new HomeFragment());
+    loadFragment(new HomeFragment(this));
     getSupportActionBar().setSubtitle("Home");
 
     binding.navigationView.setNavigationItemSelectedListener(this);
@@ -124,7 +133,7 @@ public class MainActivity extends AppCompatActivity
 
     switch (item.getItemId()) {
       case R.id.menu_item_home:
-        loadFragment(new HomeFragment());
+        loadFragment(new HomeFragment(this));
         getSupportActionBar().setSubtitle("Home");
         binding.navigationView.setCheckedItem(item);
         break;
@@ -164,6 +173,15 @@ public class MainActivity extends AppCompatActivity
     builder.show();
   }
 
-  
-}
+  @Override
+  public void addFavorites(String idProduct) {
+     // mViewModel.addFavorites(idProduct);
+      Toast.makeText(this,"Añadido A Favoritos",Toast.LENGTH_SHORT).show();
+  }
 
+  @Override
+  public void removeFavorites(String idProduct) {
+      mViewModel.removeFavorites(idProduct);
+      Toast.makeText(this,"Eliminado De Favoritos",Toast.LENGTH_SHORT).show();
+  }
+}

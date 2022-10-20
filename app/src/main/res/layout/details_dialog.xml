@@ -4,32 +4,53 @@
     android:id="@+id/coordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <android.widget.LinearLayout
+    
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/shimmer">
+        
+        <android.widget.LinearLayout
        android:layout_width="match_parent"
        android:layout_height="match_parent"
        android:orientation="vertical">
        
-       <android.widget.LinearLayout
+       <android.widget.ImageView
            android:layout_width="match_parent"
-           android:layout_height="30dp"
-           android:orientation="horizontal"
-           android:gravity="center_vertical">
+           android:layout_height="200dp"
+           android:layout_margin="10dp"/>
            
-           <android.widget.ImageView
-               android:layout_width="24dp"
-               android:layout_height="24dp"
-               android:src="@drawable/ic_close"
-               android:id="@+id/image_close"
-               android:layout_marginLeft="10dp"/>
-               
-           <android.widget.TextView
-               android:layout_width="match_parent"
+      <android.widget.TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="10dp"/>
+           
+       <android.widget.TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="10dp"/>
+           
+       <android.widget.RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_margin="10dp">    
+           
+            <android.widget.TextView
+               android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:gravity="center"
-               android:id="@+id/item_name"/>    
-           
-       </android.widget.LinearLayout>
+               android:layout_alignParentLeft="true"/>
+                   
+       </android.widget.RelativeLayout>    
+       
+    </android.widget.LinearLayout>
+        
+    </com.facebook.shimmer.ShimmerFrameLayout>    
+
+    <android.widget.LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical"
+       android:id="@+id/container">
        
        <android.widget.ImageView
            android:layout_width="match_parent"
@@ -37,18 +58,25 @@
            android:layout_margin="10dp"
            android:id="@+id/item_image"/>
            
+      <android.widget.TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:id="@+id/item_name"
+           android:layout_marginLeft="10dp"/>
+           
        <android.widget.TextView
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:layout_marginBottom="10dp"
-           android:id="@+id/item_details"/>
+           android:id="@+id/item_description"
+           android:layout_marginLeft="10dp"/>
            
        <android.widget.RelativeLayout
            android:layout_width="match_parent"
-           android:layout_height="wrap_content">    
+           android:layout_height="wrap_content"
+           android:layout_margin="10dp">    
            
             <android.widget.TextView
-               android:layout_width="match_parent"
+               android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:id="@+id/item_price"
                android:layout_alignParentLeft="true"/>
@@ -57,7 +85,9 @@
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:button="@drawable/selector_like"
-               android:id="@+id/checkbox"/>    
+               android:id="@+id/checkbox"
+               android:layout_marginBottom="10dp"
+               android:layout_alignParentRight="true"/>    
                    
        </android.widget.RelativeLayout>    
        

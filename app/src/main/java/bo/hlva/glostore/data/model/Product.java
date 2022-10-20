@@ -1,4 +1,5 @@
 package bo.hlva.glostore.data.model;
+import androidx.annotation.Nullable;
 
 /**
 * clas model product 
@@ -7,6 +8,7 @@ package bo.hlva.glostore.data.model;
 public class Product {
 
   private String name;
+  private String description;
   private int price;
   private String urlImage;
   private String categorie;
@@ -15,6 +17,11 @@ public class Product {
 
   public String getName() {
     return this.name;
+  }
+  
+  @Nullable
+  public String getDescription(){
+      return this.description;
   }
 
   public int getPrice() {
